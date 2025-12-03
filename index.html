@@ -346,15 +346,15 @@
     link.className = 'casella';
     link.textContent = i;
 
-    // if (i <= linksSpotify.length) link.href = linksSpotify[i - 1];
+    if (i <= linksSpotify.length) link.href = linksSpotify[i - 1];
     
     // Se il giorno è maggiore di 3, assegna il link Spotify
-    if (i > 3 && i <= linksSpotify.length) {
-      link.href = linksSpotify[i - 1];
-    } else {
-      // Per i primi 3 giorni, niente link (resta cliccabile per animazione)
-      link.style.cursor = 'default'; // opzionale: cambia il cursore
-    }
+    // if (i > 3 && i <= linksSpotify.length) {
+    //   link.href = linksSpotify[i - 1];
+    // } else {
+    //   // Per i primi 3 giorni, niente link (resta cliccabile per animazione)
+    //   link.style.cursor = 'default'; // opzionale: cambia il cursore
+    // }
 
 
     if (i > giornoCorrente) {
