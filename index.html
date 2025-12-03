@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="it">
-<link "https://fonts.googleapis.com/css2?family=&display=swap">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calendario dell'Avvento🎄</title>
+https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap
 <style>
   body {
     font-family: 'Luckiest Guy', cursive;
@@ -23,16 +23,17 @@
   }
   .calendario {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 10px;
     width: 100%;
     max-width: 900px;
     margin: 30px auto;
+    padding: 0 10px;
   }
   .casella {
     background: #c0392b;
     color: #fff;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bold;
     border-radius: 10px;
     display: flex;
@@ -54,11 +55,25 @@
     pointer-events: none;
   }
   .aperto {
-    background: #27ae60; /* verde */
+    background: #27ae60;
   }
   .oggi {
-    background: #f1c40f; /* giallo */
+    background: #f1c40f;
     color: #000;
+  }
+
+  /* ✅ Media query per schermi piccoli */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.8em;
+    }
+    .calendario {
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+      gap: 8px;
+    }
+    .casella {
+      font-size: 1.2em;
+    }
   }
 </style>
 </head>
@@ -68,11 +83,11 @@
 
 <script>
 const oggi = new Date();
-const giornoCorrente = oggi.getDate(); // es. 3 dicembre → 3
+const giornoCorrente = oggi.getDate();
 const linksSpotify = [
-  "https://open.spotify.com/track/ID1", // Giorno 1
-  "https://open.spotify.com/track/ID2", // Giorno 2
-  // ... aggiungi fino a 24
+  "https://open.spotify.com/track/ID1",
+  "https://open.spotify.com/track/ID2",
+  // ... fino a 24
 ];
 const calendario = document.getElementById('calendario');
 
@@ -83,21 +98,20 @@ for (let i = 1; i <= 24; i++) {
   if (i <= linksSpotify.length) link.href = linksSpotify[i-1];
 
   if (i > giornoCorrente) {
-    link.classList.add('bloccato'); // Giorni futuri
+    link.classList.add('bloccato');
   } else if (i === giornoCorrente) {
-    link.classList.add('oggi'); // Giorno corrente
+    link.classList.add('oggi');
   } else {
-    link.classList.add('aperto'); // Giorni passati
+    link.classList.add('aperto');
   }
 
-  // Animazione flip al click
   if (i <= giornoCorrente) {
     link.addEventListener('click', (e) => {
-      e.preventDefault(); // evita il redirect immediato
+      e.preventDefault();
       link.classList.add('flip');
       setTimeout(() => {
-        window.location.href = link.href; // vai al link dopo animazione
-      }, 600); // tempo uguale alla durata della transizione
+        window.location.href = link.href;
+      }, 600);
     });
   }
 
