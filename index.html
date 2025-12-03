@@ -239,8 +239,30 @@
 
   // Link Spotify per i giorni (compila fino a 24)
   const linksSpotify = [
-    "https://open.spotify.com/track/ID1", // Giorno 1
-    "https://open.spotify.com/track/ID2", // Giorno 2
+    "XXX" // Giorno 1
+    "XXX" // Giorno 2
+    "XXX" // Giorno 3
+    "https://open.spotify.com/intl-it/track/4KFAjy930IHiqnVyIvYQSX?si=b48396db63a54648", // Giorno 4
+    "https://open.spotify.com/intl-it/track/5PWWE1zru2DTIQBUUjG1F5?si=baaf7c566d39417b", // Giorno 5
+    "https://open.spotify.com/intl-it/track/2TkBlDMVfOwvCgAE1HgGJs?si=27ecede4051744df", // Giorno 6
+    "https://open.spotify.com/intl-it/track/7E2JGYlbak8ss40Ts9At5w?si=89a678d93b6f407f", // Giorno 7
+    "https://open.spotify.com/intl-it/track/4Hb81qyNmL1J5kpGw0RGIX?si=7d203c75e1ee46f5", // Giorno 8
+    "https://open.spotify.com/intl-it/track/4sM6LOWDoXE6HwE0uP95gi?si=472e5a7e934c4183", // Giorno 9
+    "https://open.spotify.com/intl-it/track/5s9t3JvEkC7AY5LJbW04S2?si=f3469860918f4d32", // Giorno 10
+    "https://open.spotify.com/intl-it/track/6Lld5N170CxESYeUTs9ajz?si=93b7c07fb74e4377", // Giorno 11
+    "https://open.spotify.com/intl-it/track/5yXIZtEORaxvQB1yaJe1qq?si=11a39d6b53854d58", // Giorno 12
+    "https://open.spotify.com/intl-it/track/1vIIlm4WH8ymz70wyLZuR9?si=44fbaacb96ff4335", // Giorno 13
+    "https://open.spotify.com/intl-it/track/1tONDgDSEqtmmA0yB4BZmM?si=31660a223ef5482f", // Giorno 14
+    "https://open.spotify.com/intl-it/track/3rGX2jDP3bTMrrQAVihhEb?si=9b08984ed11b40ba", // Giorno 15
+    "https://open.spotify.com/intl-it/track/5vWRdNYlnukLT4GkWFpLEC?si=c9f782ef89ee40fd", // Giorno 16
+    "https://open.spotify.com/intl-it/track/0elMj7AzidwaaPFyaY01UW?si=c11e18bd7dfb4480", // Giorno 17
+    "https://open.spotify.com/intl-it/track/69kLZ80Yv9v35H6PLfmnjc?si=04b8d0d361f94763", // Giorno 18
+    "https://open.spotify.com/intl-it/track/028LaD5Dah89XXoTgdQlus?si=6630c9b8029243b1", // Giorno 19
+    "https://open.spotify.com/intl-it/track/7p7md8Dm119xZjWDi0CTCf?si=642c8c4982774ca6", // Giorno 20
+    "https://open.spotify.com/intl-it/track/3YmBcOz5gaSPxE2nFQImrn?si=f78cb302fde24eee", // Giorno 21
+    "https://open.spotify.com/intl-it/track/7CIEoF5upSOW08JIscz9K0?si=9a303a64d3aa4928", // Giorno 22
+    "https://open.spotify.com/intl-it/track/0bUHiJU38MWBn7RL1D3DDO?si=05e5a8b03aad4a37", // Giorno 23
+    "XXX", // Giorno 24
     // ...
   ];
 
@@ -302,13 +324,14 @@
 
     if (i <= linksSpotify.length) link.href = linksSpotify[i - 1];
 
-    if (i > giornoCorrente) {
-      link.classList.add('bloccato'); // Giorni futuri
-    } else if (i === giornoCorrente) {
-      link.classList.add('oggi'); // Giorno corrente
-    } else {
-      link.classList.add('aperto'); // Giorni passati
-    }
+    link.classList.add('aperto'); // Giorni passati
+    // if (i > giornoCorrente) {
+    //   link.classList.add('bloccato'); // Giorni futuri
+    // } else if (i === giornoCorrente) {
+    //   link.classList.add('oggi'); // Giorno corrente
+    // } else {
+    //   link.classList.add('aperto'); // Giorni passati
+    // }
 
     // Click: mostra popup invece di redirigere subito
     if (i <= giornoCorrente && link.href) {
