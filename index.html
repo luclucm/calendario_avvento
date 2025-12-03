@@ -1,24 +1,71 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calendario dell'Avvento Patata 🎄</title>
+<link href="https://fonts.googleapis.com/css2?family=&display=swap
 <style>
-  body { font-family: 'Arial', sans-serif; background: #f2f2f2 url('https://st.depositphotos.com/1719108/1204/i/950/depositphotos_12049366-stock-illustration-the-funny-christmas-drawing-santa.jpg') no-repeat center center fixed; background-size: cover; text-align: center; }
-  h1 { color: #fff; text-shadow: 2px 2px 4px #000; margin-top: 20px; }
-  .calendario { display: grid; grid-template-columns: repeat(4, 200px); gap: 20px; justify-content: center; margin-top: 30px; }
-  .casella { background: #c0392b; color: #fff; font-size: 50px; font-weight: bold; border-radius: 10px; display: flex; align-items: center; justify-content: center; height: 130px; text-decoration: none; transition: 0.3s; }
-  .casella:hover { background: #e74c3c; transform: scale(1.1); }
-  .bloccato { background: gray; pointer-events: none; }
-  .aperto { background: #27ae60;}
-  .oggi { background: #f1c40f; color: #000;}
-
+  body {
+    font-family: 'Luckiest Guy', cursive;
+    background: #f2f2f2 url('https://st.depositphotos.com/1719108/1204/i/950/depositphotos_12049366-stock-illustration-the-funny-christmas-drawing-santa.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+  }
+  h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+    font-size: 2.5em;
+  }
+  .calendario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+  }
+  .casella {
+    background: #c0392b;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    text-decoration: none;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .casella:hover {
+    transform: scale(1.05);
+  }
+  .casella.flip {
+    transform: rotateY(180deg);
+  }
+  .bloccato {
+    background: gray;
+    pointer-events: none;
+  }
+  .aperto {
+    background: #27ae60; /* verde */
+  }
+  .oggi {
+    background: #f1c40f; /* giallo */
+    color: #000;
+  }
 </style>
 </head>
 <body>
 <h1>🎄 Calendario dell'Avvento 🎄</h1>
 <div class="calendario" id="calendario"></div>
-  
+
 <script>
 const oggi = new Date();
 const giornoCorrente = oggi.getDate(); // es. 3 dicembre → 3
@@ -28,21 +75,32 @@ const linksSpotify = [
   // ... aggiungi fino a 24
 ];
 const calendario = document.getElementById('calendario');
-  
+
 for (let i = 1; i <= 24; i++) {
   const link = document.createElement('a');
   link.className = 'casella';
   link.textContent = i;
   if (i <= linksSpotify.length) link.href = linksSpotify[i-1];
-  
+
   if (i > giornoCorrente) {
-      link.classList.add('bloccato'); // Giorni futuri
-    } else if (i === giornoCorrente) {
-      link.classList.add('oggi'); // Giorno corrente
-    } else {
-      link.classList.add('aperto'); // Giorni passati
-    }
-  
+    link.classList.add('bloccato'); // Giorni futuri
+  } else if (i === giornoCorrente) {
+    link.classList.add('oggi'); // Giorno corrente
+  } else {
+    link.classList.add('aperto'); // Giorni passati
+  }
+
+  // Animazione flip al click
+  if (i <= giornoCorrente) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // evita il redirect immediato
+      link.classList.add('flip');
+      setTimeout(() => {
+        window.location.href = link.href; // vai al link dopo animazione
+      }, 600); // tempo uguale alla durata della transizione
+    });
+  }
+
   calendario.appendChild(link);
 }
 </script>
