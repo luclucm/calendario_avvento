@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario dell'Avvento</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f8f8f8; }
+    .casella { display: inline-block; width: 80px; height: 80px; margin: 5px; background: #c00; color: white; line-height: 80px; font-weight: bold; border-radius: 10px; }
+    .bloccato { background: gray; }
+  </style>
+</head>
+<body>
+  <h1>🎄 Calendario dell'Avvento 🎄</h1>
+  <div id="calendario"></div>
+  <script>
+    const oggi = new Date();
+    const giornoCorrente = oggi.getDate();
+    const calendario = document.getElementById('calendario');
+    for (let i = 1; i <= 24; i++) {
+      const casella = document.createElement('div');
+      casella.className = 'casella';
+      casella.textContent = i;
+      if (i > giornoCorrente) casella.classList.add('bloccato');
+      calendario.appendChild(casella);
+    }
+  </script>
+</body>
+</html>
