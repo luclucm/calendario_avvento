@@ -2,28 +2,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Calendario dell'Avvento</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; background: #f8f8f8; }
-    .casella { display: inline-block; width: 80px; height: 80px; margin: 5px; background: #c00; color: white; line-height: 80px; font-weight: bold; border-radius: 10px; }
-    .bloccato { background: gray; }
-  </style>
+<meta charset="UTF-8">
+<title>Calendario dell'Avvento 🎄</title>
+<style>
+  body { font-family: 'Arial', sans-serif; background: #f2f2f2 url('https://i.imgur.com/8Km9tLL.jpg') no-repeat center center fixed; background-size: cover; text-align: center; }
+  h1 { color: #fff; text-shadow: 2px 2px 4px #000; margin-top: 20px; }
+  .calendario { display: grid; grid-template-columns: repeat(6, 100px); gap: 10px; justify-content: center; margin-top: 30px; }
+  .casella { background: #c0392b; color: #fff; font-size: 24px; font-weight: bold; border-radius: 10px; display: flex; align-items: center; justify-content: center; height: 100px; text-decoration: none; transition: 0.3s; }
+  .casella:hover { background: #e74c3c; transform: scale(1.1); }
+  .bloccato { background: gray; pointer-events: none; }
+</style>
 </head>
 <body>
-  <h1>🎄 Calendario dell'Avvento 🎄</h1>
-  <div id="calendario"></div>
-  <script>
-    const oggi = new Date();
-    const giornoCorrente = oggi.getDate();
-    const calendario = document.getElementById('calendario');
-    for (let i = 1; i <= 24; i++) {
-      const casella = document.createElement('div');
-      casella.className = 'casella';
-      casella.textContent = i;
-      if (i > giornoCorrente) casella.classList.add('bloccato');
-      calendario.appendChild(casella);
-    }
-  </script>
+<h1>🎄 Calendario dell'Avvento 🎄</h1>
+<div class="calendario" id="calendario"></div>
+<script>
+const oggi = new Date();
+const giornoCorrente = oggi.getDate(); // es. 3 dicembre → 3
+const linksSpotify = [
+  "https://open.spotify.com/track/ID1", // Giorno 1
+  "https://open.spotify.com/track/ID2", // Giorno 2
+  // ... aggiungi fino a 24
+];
+const calendario = document.getElementById('calendario');
+for (let i = 1; i <= 24; i++) {
+  const link = document.createElement('a');
+  link.className = 'casella';
+  link.textContent = i;
+  if (i <= linksSpotify.length) link.href = linksSpotify[i-1];
+  if (i > giornoCorrente) link.classList.add('bloccato');
+  calendario.appendChild(link);
+}
+</script>
 </body>
 </html>
