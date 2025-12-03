@@ -235,18 +235,19 @@
 <script>
   // Data di oggi
   const oggi = new Date();
-  const giornoCorrente = oggi.getDate(); // es. 3 dicembre -> 3
+  // const giornoCorrente = oggi.getDate(); // es. 3 dicembre -> 3
+  const giornoCorrente=100;
 
   // Link Spotify per i giorni (compila fino a 24)
   const linksSpotify = [
     "XXX" // Giorno 1
     "XXX" // Giorno 2
     "XXX" // Giorno 3
+    "https://open.spotify.com/intl-it/track/4Hb81qyNmL1J5kpGw0RGIX?si=7d203c75e1ee46f5", // Giorno 8
     "https://open.spotify.com/intl-it/track/4KFAjy930IHiqnVyIvYQSX?si=b48396db63a54648", // Giorno 4
     "https://open.spotify.com/intl-it/track/5PWWE1zru2DTIQBUUjG1F5?si=baaf7c566d39417b", // Giorno 5
     "https://open.spotify.com/intl-it/track/2TkBlDMVfOwvCgAE1HgGJs?si=27ecede4051744df", // Giorno 6
     "https://open.spotify.com/intl-it/track/7E2JGYlbak8ss40Ts9At5w?si=89a678d93b6f407f", // Giorno 7
-    "https://open.spotify.com/intl-it/track/4Hb81qyNmL1J5kpGw0RGIX?si=7d203c75e1ee46f5", // Giorno 8
     "https://open.spotify.com/intl-it/track/4sM6LOWDoXE6HwE0uP95gi?si=472e5a7e934c4183", // Giorno 9
     "https://open.spotify.com/intl-it/track/5s9t3JvEkC7AY5LJbW04S2?si=f3469860918f4d32", // Giorno 10
     "https://open.spotify.com/intl-it/track/6Lld5N170CxESYeUTs9ajz?si=93b7c07fb74e4377", // Giorno 11
@@ -268,8 +269,31 @@
 
   // Brevi descrizioni per ciascun giorno (compila fino a 24)
   const descrizioni = [
-    "Un classico natalizio per iniziare con il piede giusto! 🎶",
-    "Oggi ci scaldiamo con un brano dal ritmo allegro.",
+    "Sei arrivata tardi eheheh 😎",
+    "Sei arrivata tardi eheheh 😎",
+    "Sei arrivata tardi eheheh 😎",
+    "Ascolto consigliato: prima di dormire a luce spenta ⭐",                        // Giorno 8 gio
+    "Ascolto consigliato: la mattina mentre fai colazione 🍪",                       // Giorno 4 ven
+    "Ascolto consigliato: libero come questa canzone ⛓️‍💥",                            // Giorno 5 sab
+    "Ascolto consigliato: mentre viaggi in macchina 🚙",                             // Giorno 6 dom
+    "Ascolto consigliato: guardando fuori dal finestrino del treno 🚂",              // Giorno 7 lun
+    "Per apprezzarla al meglio cerca la traduzione 😉",                              // Giorno 9 mar
+    "Ascolto consigliato: mentre passeggi per le vie di Padova 🏙️",                  // Giorno 13 mer
+    "Ascolto consigliato: prima di dormire a luce spenta ⭐ (p.s storia vera)",      // Giorno 12 gio
+    "Ascolto consigliato: in cameretta guardando fuori dalla finestra 🪟",           // Giorno 11 ven
+    "Ascolto consigliato: un momento in cui sei sola con te stessa ❤️",              // Giorno 10 sab
+    "Ascolto consigliato: prima di dormire a luce spenta ⭐",                        // Giorno 14 dom
+    "Ascolto consigliato: in treno osservando gli altri passeggeri 🔍",              // Giorno 15 lun
+    "Ascolto consigliato: mentre passeggi per le vie di Padova 🏙️",                  // Giorno 16 mar
+    "Ascolto consigliato: guardando fuori dal finestrino del treno 🚂",              // Giorno 21 mer
+    "Canzone del 1973 e la situazione non è cambiata...🍉",                          // Giorno 17 gio
+    "Ascolto consigliato: quando vuoi sfogarti su chi se lo merita ✊",              // Giorno 18 ven
+    "So che non è decisamente il tuo genere, ma dagli una possibilità parla di una storia vera",    // Giorno 19 sab
+    "Per apprezzarla al meglio cerca la traduzione 😉",                              // Giorno 20 dom
+    "Ascolto consigliato: facendola ascoltare a più persone possibili 🍉",           // Giorno 22 lun
+    "Ascolto consigliato: prima di dormire a luce spenta ⭐",                        // Giorno 23 mar
+    "XXX",  //
+    
     // ...
   ];
 
@@ -324,14 +348,13 @@
 
     if (i <= linksSpotify.length) link.href = linksSpotify[i - 1];
 
-    link.classList.add('aperto'); // Giorni passati
-    // if (i > giornoCorrente) {
-    //   link.classList.add('bloccato'); // Giorni futuri
-    // } else if (i === giornoCorrente) {
-    //   link.classList.add('oggi'); // Giorno corrente
-    // } else {
-    //   link.classList.add('aperto'); // Giorni passati
-    // }
+    if (i > giornoCorrente) {
+      link.classList.add('bloccato'); // Giorni futuri
+    } else if (i === giornoCorrente) {
+      link.classList.add('oggi'); // Giorno corrente
+    } else {
+      link.classList.add('aperto'); // Giorni passati
+    }
 
     // Click: mostra popup invece di redirigere subito
     if (i <= giornoCorrente && link.href) {
