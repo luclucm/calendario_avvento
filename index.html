@@ -38,15 +38,37 @@
     font-size: 2.5em;
   }
 
+  
   .calendario {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
     gap: 10px;
     width: 100%;
     max-width: 900px;
     margin: 30px auto;
     padding: 0 10px;
   }
+  
+  /* Desktop: 4 colonne */
+  @media (min-width: 900px) {
+    .calendario {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  /* Tablet: 3 colonne */
+  @media (min-width: 600px) and (max-width: 899px) {
+    .calendario {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Mobile: 2 colonne */
+  @media (max-width: 599px) {
+    .calendario {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
 
   .casella {
     background: var(--rosso);
