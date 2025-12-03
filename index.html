@@ -213,6 +213,27 @@
   <h1>🎄 Calendario dell'avvento 🥔🥔 🎄</h1>
   <div class="calendario" id="calendario"></div>
 
+  
+<!-- AGGIUNTA: Popup introduttivo all'apertura -->
+<div class="modal-backdrop" id="introBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="modal-header" id="introTitle">🎄 Benvenutə nel Calendario dell’Avvento</div>
+    <div class="modal-body">
+      <p id="introDescription">
+        In questo calendario ho cercato di raccogliere delle storie e pensieri che mi piacciono, per condividere con te qualcosa di me. Probabilmente alcune non sono proprio il tuo genere, però di chiedo di prendere solo qualche minuto della tua giornata, interrompere tutto e lasciarti trasportare dalla musica. Spero ti piaccia, buon viaggio 🛸 
+      </p>
+      <label style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+        <input type="checkbox" id="introHideForever">
+        <span>Non mostrare più questo messaggio</span>
+      </label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-close" id="introClose">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+
   <!-- ===========================
        Modal markup
        =========================== -->
@@ -296,6 +317,38 @@
     
     // ...
   ];
+
+
+  
+  <!-- AGGIUNTA: Gestione popup INTRO -->
+  const introBackdrop     = document.getElementById('introBackdrop');
+  const introClose        = document.getElementById('introClose');
+  const introHideForever  = document.getElementById('introHideForever');
+  const introTitleEl      = document.getElementById('introTitle');
+  
+  function apriIntro() {
+    introBackdrop.classList.add('show');
+    introBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+    setTimeout(() => introTitleEl?.focus(), 0); // accessibilità
+  }
+  function chiudiIntro() {
+    introBackdrop.classList.remove('show');
+    introBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+    if (introHideForever && introHideForever.checked) {
+      localStorage.setItem('introHidden', '1');
+    }
+  }
+  introClose.addEventListener('click', chiudiIntro);
+  introBackdrop.addEventListener('click', (e) => {
+    if (e.target === introBackdrop) chiudiIntro();
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const nascondiIntro = localStorage.getItem('introHidden') === '1';
+    if (!nascondiIntro) setTimeout(apriIntro, 200);
+  });
+
 
   // Riferimenti al modal
   const backdrop = document.getElementById('modal-backdrop');
