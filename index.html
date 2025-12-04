@@ -294,7 +294,7 @@
   const descrizioni = [
     "Sei arrivata tardi eheheh 😎",
     "Sei arrivata tardi eheheh 😎",
-    "Sei arrivata tardi eheheh 😎" + linkVideo,
+    "Sei arrivata tardi eheheh 😎 <a href="https://www.youtube.com/watch?v=G3FnjOf3DQA&list=RDG3FnjOf3DQA&start_radio=1">video</a>",
     "Ascolto consigliato: prima di dormire a luce spenta ⭐",                        // Giorno 8 gio
     "Ascolto consigliato: la mattina mentre fai colazione 🍪",                       // Giorno 4 ven
     "Ascolto consigliato: libero come questa canzone ⛓️‍💥",                            // Giorno 5 sab
@@ -360,20 +360,42 @@
   const btnClose = document.getElementById('btn-close');
   const btnCancel = document.getElementById('btn-cancel');
 
-  // Funzioni per aprire/chiudere il modal
+ //  // Funzioni per aprire/chiudere il modal
+  // function openModal(day, url) {
+   //  modalTitle.textContent = `Giorno ${day}`;
+   //  //modalText.textContent = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
+   //  modalText.innerHTML = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
+   //  btnSpotify.onclick = () => { window.location.href = url; };
+
+   //  backdrop.classList.add('show');
+   //  backdrop.setAttribute('aria-hidden', 'false');
+   //  document.body.classList.add('no-scroll');
+
+   //  // Porta il focus sul bottone principale (accessibilità)
+   //  setTimeout(() => btnSpotify.focus(), 50);
+  // }
+
+  
   function openModal(day, url) {
     modalTitle.textContent = `Giorno ${day}`;
-    //modalText.textContent = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
-    modalText.innerHTML = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
+  
+    const testo = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
+  
+    // Se la stringa contiene un <a ...> allora interpreto l'HTML
+    if (/<a\b[^>]*>/i.test(testo)) {
+      modalText.innerHTML = testo;
+    } else {
+      modalText.textContent = testo;
+    }
+  
     btnSpotify.onclick = () => { window.location.href = url; };
-
+  
     backdrop.classList.add('show');
     backdrop.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
-
-    // Porta il focus sul bottone principale (accessibilità)
+  
     setTimeout(() => btnSpotify.focus(), 50);
-  }
+
 
   function closeModal() {
     backdrop.classList.remove('show');
