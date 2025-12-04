@@ -97,10 +97,13 @@
     pointer-events: none;
   }
   
-  /* .aperto { background: #27ae60; } */
-  .aperto{
-    background-image: var(--aperto-img);
-    color: #fff;
+  /* .aperto { background: #27ae60; } */   
+  .aperto {
+    background-color: #27ae60; /* verde di default */
+    background-image: var(--aperto-img); /* immagine se presente */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   
   .oggi {
@@ -329,8 +332,8 @@
 
   // Immagini caselle aperte
   const immaginiAperte = [
-    'images/8.png', // giorno 1
-    'images/4.png', // giorno 2
+    //'images/8.png', // giorno 1
+    //'images/4.png', // giorno 2
     // ... fino a giorno 24
   ];
 
