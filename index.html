@@ -361,7 +361,8 @@
   // Funzioni per aprire/chiudere il modal
   function openModal(day, url) {
     modalTitle.textContent = `Giorno ${day}`;
-    modalText.textContent = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
+    //modalText.textContent = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
+    modalText.innerHTML = descrizioni[day - 1] || "Pronti a scoprire il brano di oggi? 🎄";
     btnSpotify.onclick = () => { window.location.href = url; };
 
     backdrop.classList.add('show');
@@ -400,15 +401,6 @@
     link.textContent = i;
 
     if (i <= linksSpotify.length) link.href = linksSpotify[i - 1];
-    
-    // Se il giorno è maggiore di 3, assegna il link Spotify
-    // if (i > 3 && i <= linksSpotify.length) {
-    //   link.href = linksSpotify[i - 1];
-    // } else {
-    //   // Per i primi 3 giorni, niente link (resta cliccabile per animazione)
-    //   link.style.cursor = 'default'; // opzionale: cambia il cursore
-    // }
-
 
     if (i > giornoCorrente) {
       link.classList.add('bloccato'); // Giorni futuri
