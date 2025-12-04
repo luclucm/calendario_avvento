@@ -93,7 +93,13 @@
     background: gray;
     pointer-events: none;
   }
-  .aperto { background: #27ae60; }
+  
+  /* .aperto { background: #27ae60; } */
+  .aperto{
+    background-image: var(--aperto-img);
+    color: #fff;
+  }
+  
   .oggi {
     background: #f1c40f;
     color: #000;
@@ -288,8 +294,6 @@
     // ...
   ];
 
-  //const linkVideo = <a href="https://www.youtube.com/watch?v=G3FnjOf3DQA&list=RDG3FnjOf3DQA&start_radio=1">video</a>";
-  
   // Brevi descrizioni per ciascun giorno (compila fino a 24)
   const descrizioni = [
     "Sei arrivata tardi eheheh 😎",
@@ -320,8 +324,13 @@
     // ...
   ];
 
+  // Immagini caselle aperte
+  const immaginiAperte = [
+    'https://github.com/luclucm/calendario_avvento/blob/main/images/4.png', // giorno 1
+    'https://github.com/luclucm/calendario_avvento/blob/main/images/8.png', // giorno 2
+    // ... fino a giorno 24
+  ];
 
-  
   <!-- AGGIUNTA: Gestione popup INTRO -->
   const introBackdrop     = document.getElementById('introBackdrop');
   const introClose        = document.getElementById('introClose');
@@ -431,7 +440,13 @@
     } else if (i === giornoCorrente) {
       link.classList.add('oggi'); // Giorno corrente
     } else {
-      link.classList.add('aperto'); // Giorni passati
+      link.classList.add('aperto');   // Giorni passati
+        const urlImg = immaginiAperte[i - 1];
+        if (urlImg) {
+          link.style.setProperty('--aperto-img', `url('${urlImg}')`);
+        }
+    //else {
+    //  link.classList.add('aperto'); // Giorni passati
     }
 
     // Click: mostra popup invece di redirigere subito
