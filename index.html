@@ -288,11 +288,13 @@
     // ...
   ];
 
+  const linkVideo = "https://www.youtube.com/watch?v=G3FnjOf3DQA&list=RDG3FnjOf3DQA&start_radio=1</a>";
+  
   // Brevi descrizioni per ciascun giorno (compila fino a 24)
   const descrizioni = [
     "Sei arrivata tardi eheheh 😎",
     "Sei arrivata tardi eheheh 😎",
-    "Sei arrivata tardi eheheh 😎 <a https://www.youtube.com/watch?v=G3FnjOf3DQA&list=RDG3FnjOf3DQA&start_radio=1> video </a>",
+    "Sei arrivata tardi eheheh 😎" + linkVideo,
     "Ascolto consigliato: prima di dormire a luce spenta ⭐",                        // Giorno 8 gio
     "Ascolto consigliato: la mattina mentre fai colazione 🍪",                       // Giorno 4 ven
     "Ascolto consigliato: libero come questa canzone ⛓️‍💥",                            // Giorno 5 sab
@@ -353,7 +355,7 @@
   // Riferimenti al modal
   const backdrop = document.getElementById('modal-backdrop');
   const modalTitle = document.getElementById('modal-title');
-  const modalText = document.getElementById('modal-text').innerHTML;
+  const modalText = document.getElementById('modal-text');
   const btnSpotify = document.getElementById('btn-spotify');
   const btnClose = document.getElementById('btn-close');
   const btnCancel = document.getElementById('btn-cancel');
